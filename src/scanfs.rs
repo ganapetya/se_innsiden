@@ -1,12 +1,8 @@
 use std::collections::HashMap;
 use std::fs::{self, DirEntry};
 
-
-
 pub fn scan_directory(dir_path: Option<&String>) -> HashMap<String, DirEntry> {
     let mut fs_elements = HashMap::new();
-
-    
     if let Some(path) = dir_path {
         let paths = fs::read_dir(path).unwrap();
         for one_path in paths {
@@ -18,9 +14,5 @@ pub fn scan_directory(dir_path: Option<&String>) -> HashMap<String, DirEntry> {
             }
         }
     }
-    
-    
-
-
     fs_elements
 }

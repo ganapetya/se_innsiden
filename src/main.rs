@@ -1,5 +1,5 @@
-use std::env;
 use scanfs::scan_directory;
+use std::env;
 
 mod scanfs;
 
@@ -12,4 +12,3 @@ fn main() {
         println!("Map Entry: {:?}", path);
     }
 }
-
