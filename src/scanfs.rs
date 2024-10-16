@@ -45,6 +45,7 @@ fn collect_fs_data(present_paths: ReadDir, sender: &Sender<DirEntry>) -> () {
                         one_path_present.path().to_str().map(|e| e.to_string());
                     scan_directory_send(path_param.as_ref(), sender);
                 }
+                //TODO: process or note negative result
                 let _ = sender.send(one_path_present);
             }
         }
