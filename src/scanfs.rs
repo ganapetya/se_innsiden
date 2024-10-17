@@ -27,7 +27,7 @@ pub fn scan_directory(dir_path: Option<&String>) -> HashMap<String, DirEntry> {
     fs_elements
 }
 
-pub fn scan_directory_send(dir_path: Option<&String>, sender: &Sender<DirEntry>) -> () {
+fn scan_directory_send(dir_path: Option<&String>, sender: &Sender<DirEntry>) -> () {
     if let Some(path) = dir_path {
         let result_paths = fs::read_dir(path);
         if let Ok(present_paths) = result_paths {
