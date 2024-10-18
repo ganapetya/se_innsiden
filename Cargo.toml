@@ -5,3 +5,4 @@ edition = "2021"
 
 [dependencies]
 rayon = "1.10"
+log = "0.4.22"
