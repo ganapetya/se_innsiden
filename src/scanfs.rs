@@ -13,7 +13,7 @@ pub enum FsElementType {
 
 #[derive(Debug)]
 pub struct FsElementInfo {
-    level: u32,
+    pub level: u32,
     path: String,
     size_bytes: u64,
     kind: FsElementType,
