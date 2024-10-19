@@ -20,14 +20,14 @@ pub struct FsElementInfo {
 }
 
 pub fn scan_directory(dir_path: Option<&String>) -> Vec<FsElementInfo> {
-    let reciever = {
-        let (sender, reciever) = channel();
+    let receiver = {
+        let (sender, receiver) = channel();
 
         scan_directory_req(dir_path, &sender, 0);
 
-        reciever
+        receiver
     };
-    reciever.into_iter().par_bridge().collect()
+    receiver.into_iter().par_bridge().collect()
 }
 
 fn scan_directory_req(
@@ -86,7 +86,7 @@ fn collect_directory_data(
     });
 
     let file_info = FsElementInfo {
-        level: level,
+        level,
         path: parent_path.to_string(),
         size_bytes: result,
         kind: FsElementType::DIR,
