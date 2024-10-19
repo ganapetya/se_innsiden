@@ -2,7 +2,7 @@ use log::{info, warn};
 use rayon::iter::ParallelBridge;
 use rayon::prelude::ParallelIterator;
 use std::fs::{self, ReadDir};
-use std::os::windows::fs::MetadataExt;
+use std::os::linux::fs::MetadataExt;
 use std::sync::mpsc::{channel, Sender};
 
 #[derive(Debug)]
@@ -70,7 +70,7 @@ fn collect_directory_data(
                 } else if file_type.is_file() {
                     let metadata = fs::metadata(&path_name);
                     if let Ok(metadata) = metadata {
-                        let file_size = metadata.file_size();
+                        let file_size = metadata.st_size();
                         result += file_size;
                         let file_info = FsElementInfo {
                             level: level + 1,
