@@ -19,7 +19,7 @@ pub struct FsElementInfo {
     kind: FsElementType,
 }
 
-fn compare_file_with_info_by_level_size(a: &FsElementInfo, b: &FsElementInfo) -> std::cmp::Ordering {
+pub fn compare_file_with_info_by_level_size(a: &FsElementInfo, b: &FsElementInfo) -> std::cmp::Ordering {
     if a.level > b.level {
         return std::cmp::Ordering::Greater;
     }
@@ -35,13 +35,9 @@ fn compare_file_with_info_by_level_size(a: &FsElementInfo, b: &FsElementInfo) ->
     std::cmp::Ordering::Less
 }
 
-pub fn scan_directory_sort_by_size(dir_path: Option<&String>) -> Vec<FsElementInfo> {
-    let mut elements = scan_directory(dir_path);
-    elements.sort_by(compare_file_with_info_by_level_size);
-    elements
-}
 
-fn scan_directory(dir_path: Option<&String>) -> Vec<FsElementInfo> {
+
+pub fn scan_directory(dir_path: Option<&String>) -> Vec<FsElementInfo> {
     let receiver = {
         let (sender, receiver) = channel();
 
