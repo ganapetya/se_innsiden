@@ -1,7 +1,7 @@
 mod scanfs;
-use std::env;
 use se_innsiden::scan_directory_sort_by_size;
 use se_innsiden::FsElementInfo;
+use std::env;
 
 const PATH_PARAMETER: usize = 1;
 
